@@ -1,6 +1,6 @@
 module test (
     input clk,
-    output dout    
+    output dout
 );
     assign dout = ~clk;
 endmodule
