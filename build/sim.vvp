@@ -1,0 +1,59 @@
+#! /c/Source/iverilog-install/bin/vvp
+:ivl_version "12.0 (devel)" "(s20150603-1539-g2693dd32b)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision - 9;
+:vpi_module "D:\PROGRA~1\iverilog\lib\ivl\system.vpi";
+:vpi_module "D:\PROGRA~1\iverilog\lib\ivl\vhdl_sys.vpi";
+:vpi_module "D:\PROGRA~1\iverilog\lib\ivl\vhdl_textio.vpi";
+:vpi_module "D:\PROGRA~1\iverilog\lib\ivl\v2005_math.vpi";
+:vpi_module "D:\PROGRA~1\iverilog\lib\ivl\va_math.vpi";
+:vpi_module "D:\PROGRA~1\iverilog\lib\ivl\v2009.vpi";
+S_0000022b06bb9bc0 .scope package, "$unit" "$unit" 2 1;
+ .timescale 0 0;
+S_0000022b06bb9d50 .scope module, "testbench" "testbench" 3 6;
+ .timescale -9 -9;
+P_0000022b06c430c0 .param/l "CYCLE" 0 3 11, +C4<00000000000000000000000000000010>;
+P_0000022b06c430f8 .param/l "END_TIME" 0 3 12, +C4<00000000000000000000000011001000>;
+v0000022b06cbe2a0_0 .var "clk", 0 0;
+v0000022b06cbe160_0 .net "dout", 0 0, L_0000022b06c42e60;  1 drivers
+S_0000022b06c75160 .scope module, "mod" "test" 3 15, 4 1 0, S_0000022b06bb9d50;
+ .timescale -9 -9;
+    .port_info 0 /INPUT 1 "clk";
+    .port_info 1 /OUTPUT 1 "dout";
+L_0000022b06c42e60 .functor NOT 1, v0000022b06cbe2a0_0, C4<0>, C4<0>, C4<0>;
+v0000022b06bb9980_0 .net "clk", 0 0, v0000022b06cbe2a0_0;  1 drivers
+v0000022b06cbd8a0_0 .net "dout", 0 0, L_0000022b06c42e60;  alias, 1 drivers
+    .scope S_0000022b06bb9d50;
+T_0 ;
+    %vpi_call/w 3 22 "$dumpfile", "wave.vcd" {0 0 0};
+    %vpi_call/w 3 23 "$dumpvars", 32'sb00000000000000000000000000000000, S_0000022b06bb9d50 {0 0 0};
+    %end;
+    .thread T_0;
+    .scope S_0000022b06bb9d50;
+T_1 ;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0000022b06cbe2a0_0, 0, 1;
+    %vpi_call/w 3 29 "$display", "time = %0t, clk = %b, dout = %b", $time, v0000022b06cbe2a0_0, v0000022b06cbe160_0 {0 0 0};
+    %end;
+    .thread T_1;
+    .scope S_0000022b06bb9d50;
+T_2 ;
+    %delay 1, 0;
+    %load/vec4 v0000022b06cbe2a0_0;
+    %inv;
+    %store/vec4 v0000022b06cbe2a0_0, 0, 1;
+    %jmp T_2;
+    .thread T_2;
+    .scope S_0000022b06bb9d50;
+T_3 ;
+    %delay 200, 0;
+    %vpi_call/w 3 40 "$stop" {0 0 0};
+    %end;
+    .thread T_3;
+# The file index is used to find the file name in the following table.
+:file_names 5;
+    "N/A";
+    "<interactive>";
+    "-";
+    "testbench.v";
+    "./test.v";
