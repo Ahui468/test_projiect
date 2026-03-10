@@ -3,4 +3,5 @@ module test (
     output dout
 );
     assign dout = ~clk;
+    
 endmodule
