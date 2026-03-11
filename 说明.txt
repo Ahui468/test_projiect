@@ -1,0 +1,1 @@
+一个使用iverilog+gtkwave和.ps1文件进行电路仿真的demo。
