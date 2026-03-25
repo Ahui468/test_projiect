@@ -7,3 +7,4 @@ Push-Location "build"
 Pop-Location
 & "gtkwave" "build/wave.vcd"
 
+
